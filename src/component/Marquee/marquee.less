@@ -1,0 +1,38 @@
+
+.content {
+    position: relative;
+}
+.box {
+    position: relative;
+    background: url(../Marquee/marquee_index.png);
+    background-size: 100%;
+    width: 604/2px;
+    height: 604/2px;
+    margin: 0 auto;
+    li {
+        position: absolute;
+        display: block;
+        width: 75px;
+        height: 75px;
+        &:nth-child(1) {top:22px;left: 22px;}
+        &:nth-child(2) {top:22px;left: 110px;}
+        &:nth-child(3) {top:22px;left: 197px;}
+        &:nth-child(4) {top:110px;left: 197px;}
+        &:nth-child(5) {top:197px;left: 197px;}
+        &:nth-child(6) {top:197px;left: 110px;}
+        &:nth-child(7) {top:197px;left: 22px;}
+        &:nth-child(8) {top:110px;left: 22px;}
+    }
+}
+.active {
+    border: solid 4px #ffd700;
+    box-shadow: 3px 3px 0 #ffd700 inset,
+                -3px -3px 0 #ffd700 inset;
+}
+.start {
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    top: 110px;
+    left: 110px;
+}
