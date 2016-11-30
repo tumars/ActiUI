@@ -42,7 +42,7 @@ class RollNotice extends Component {
                 { horn }
                 <ReactCSSTransitionGroup 
                     className={style.box}
-                    transitionName="carousel3" 
+                    transitionName="example" 
                     transitionEnterTimeout={500} 
                     transitionLeaveTimeout={500}
                     >

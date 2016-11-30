@@ -3,13 +3,6 @@
 	width: 100%;
 	overflow-y: hidden;
 }
-// .horn {
-// 	display: table-cell;
-// 	background: url(../RollNotice/horn.png);
-// 	background-size: 100%;
-// 	width: 20px;
-// 	height: 20px;
-// }
 .icon {
 	display: table-cell;
 	width: 20px;
@@ -24,6 +17,41 @@
 .inner {
 	display: block;
 	position: absolute;
-	// top: 0;
 	left: 5px;
+}
+
+
+
+:global {
+.example-appear {
+    opacity: 1;
+}
+
+.example-appear.example-appear-active {
+    opacity: 1;
+    transition: opacity 1000ms linear;
+}
+
+.example-enter {
+    left: 80px;
+    position: relative;
+    opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+    left: 0;
+    opacity: 1;
+    transition: left 300ms ease-in, opacity 300ms linear;
+}
+
+.example-leave {
+    position: fixed;
+    top: 0;
+    opacity: 1;
+}
+
+.example-leave.example-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+}
 }

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "lint": "eslint src",
-    "build-mac": "rm dist && export NODE_ENV=production && webpack -p --config ./webpack.production.config.js --progress --profile --colors",
+    "build-mac": "webpack -p --config ./webpack.production.config.js --progress --profile --colors",
     "build-win": "del dist && set NODE_ENV=production && webpack -p --config ./webpack.production.config.js --progress --profile --colors"
   },
   "author": "tumars",

@@ -3,6 +3,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import { arduinoLight } from 'react-syntax-highlighter/dist/styles';
 import ListErr from './ListErr'
 import useTabSwitch from './use/useTabSwitch.js'
+import useRollNotice from './use/useRollNotice.js'
 
 import style from './app.less'
 
@@ -26,16 +27,22 @@ const data = [
 			'content1|第一个标签页的内容|string、ReactNode|null',
 			'content2|第二个标签页的内容|string、ReactNode|null'
 		]
+	},
+	{
+		name: '滚动公告 RollNotice',
+		demo: useRollNotice(),
+		instru: '滚动公告，常用于用户获奖公告',
+		code: require("raw-loader!./use/useTabSwitch.de"),
+		api: [
+			'data|要滚动显示的数据组|array|null',
+			'color|喇叭与文字颜色|string|#000'
+		]
 	}
 ]
 
 class Card extends Component {
 	constructor(props) {
 		super(props);
-	}
-
-	componentDidMount() {
-		console.log(this.props)
 	}
 
 	render() {
@@ -48,8 +55,8 @@ class Card extends Component {
 					<li>类型</li>
 					<li>默认值</li>
 				</ul>
-				{value.api.map((val) => 
-					<ul>
+				{value.api.map((val,i) => 
+					<ul key={i}>
 						<li>{val.split('|')[0]}</li>
 						<li>{val.split('|')[1]}</li>
 						<li>{val.split('|')[2]}</li>
@@ -112,7 +119,6 @@ export default class App extends Component {
 	}
 
 	render() {
-		console.log(data)
 		return (
 			<div className={style.content}>
 				{data.map((value, index) =>
