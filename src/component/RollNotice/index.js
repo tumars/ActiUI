@@ -38,11 +38,15 @@ class RollNotice extends Component {
         )
         return (
             <div  className={style.content} style={{color:this.props.color}}>
-                {/*<i className={style.horn}></i>*/}
                 { horn }
                 <ReactCSSTransitionGroup 
                     className={style.box}
-                    transitionName="example" 
+                    transitionName={{
+                        enter: style.enter,
+                        enterActive: style.enterActive,
+                        leave: style.leave,
+                        leaveActive: style.leaveActive
+                      }} 
                     transitionEnterTimeout={500} 
                     transitionLeaveTimeout={500}
                     >

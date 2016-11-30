@@ -16,7 +16,7 @@ module.exports = {
         bundle: './src/main.js'
     },
     output: {
-        path: path.join(__dirname, '/dist/'),
+        path: path.join(__dirname, '/docs/'),
         filename: '[name]-[hash:5].min.js',
         chunkFilename: '[name]-[hash:5].chunk.js',
         publicPath: './'
@@ -85,10 +85,10 @@ module.exports = {
     resolve: {
         extensions: ['', '.js', '.jsx', '.json'],
         alias: {
-            // 'react': path.join(nodeModulesPath,'react/dist/react.min'),
-            // 'react-dom': path.join(nodeModulesPath,'react-dom/dist/react-dom.min'),
-            // 'redux': path.join(nodeModulesPath,'redux/dist/redux.min'),
-            // 'react-redux': path.join(nodeModulesPath,'react-redux/dist/react-redux.min')
+            // 'react': path.join(nodeModulesPath,'react/docs/react.min'),
+            // 'react-dom': path.join(nodeModulesPath,'react-dom/docs/react-dom.min'),
+            // 'redux': path.join(nodeModulesPath,'redux/docs/redux.min'),
+            // 'react-redux': path.join(nodeModulesPath,'react-redux/docs/react-redux.min')
         }
     },
     postcss: [

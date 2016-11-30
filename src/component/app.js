@@ -32,7 +32,7 @@ const data = [
 		name: '滚动公告 RollNotice',
 		demo: useRollNotice(),
 		instru: '滚动公告，常用于用户获奖公告',
-		code: require("raw-loader!./use/useTabSwitch.de"),
+		code: require("raw-loader!./use/useRollNotice.de"),
 		api: [
 			'data|要滚动显示的数据组|array|null',
 			'color|喇叭与文字颜色|string|#000'

@@ -8,10 +8,17 @@ const useRollNotice = () => {
 		'手机尾号3428的用户获得四等奖'
 	]
 	return (
-		<RollNotice 
-			data={data}
-			color='#404040'
-		/>
+		<div>
+			<RollNotice 
+				data={data}
+				color='#404040'
+			/>
+			<br/>
+			<RollNotice 
+				data={data}
+				color='#51BAE3'
+			/>
+		</div>
 	) 
 }
 

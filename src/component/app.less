@@ -45,7 +45,7 @@ pre, code {
 .demo {
 	width: 100%;
 	max-width: 320px;
-	padding: 10px 10px 40px;
+	padding: 30px 10px 50px;
 }
 
 
@@ -53,8 +53,10 @@ pre, code {
 	ul {
 		display: table;
 		width: 100%;
-		border-top: solid 1px @line;
 		border-left: solid 1px @line;
+		&:first-child{
+			border-top: solid 1px @line;
+		}
 		li {
 			display: table-cell;
 			width: 25%;

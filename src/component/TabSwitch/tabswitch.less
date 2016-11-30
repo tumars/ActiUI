@@ -1,4 +1,4 @@
-.tabbox {
+.content {
     width: 100%;
     margin: 0 auto;
 }
@@ -10,7 +10,8 @@
     li {
         width: 48.5%;
         text-align: center;
-        line-height: 2.2;
+        height: 30px;
+        line-height: 30px;
         color: #fff;
         font-size: 1.2em;
         font-weight: bold;
@@ -22,24 +23,58 @@
 }
 li.active {
     position: relative;
-    line-height: 2.5;
-    font-size: 1.3em;
+    height: 40px;
+    line-height: 40px;
+    font-size: 1.2em;
     color: #898989;
     background: #fff;
 
     &:after {
         content: '';
         position: absolute;
-        bottom: -1px;
+        z-index: 1;
+        bottom: -2px;
         left: 0;
         width: 100%;
-        border-top: solid 2px #fff;
+        border-top: solid 4px #fff;
         background: #fff;
     }
 }
 
 .body {
-    padding: 50px 0;
+    position: relative;
+    box-sizing: border-box;
+    min-height: 150px;
     border: 1px solid #d9d9d9;
     text-align: center;
+    overflow-x: hidden;
+}
+.box{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+}
+
+
+.enter {
+    transform: translate(-100%, 0);
+    opacity: 0.01;
+}
+.enterActive {
+    transform: translate(0, 0);
+    opacity: 1;
+    transition: all 300ms ease-in;
+}
+
+.leave {
+    transform: translate(0, 0);
+    opacity: 1;
+}
+
+.leaveActive {
+    transform: translate(100%, 0);
+    opacity: 0.01;
+    transition: all 100ms ease-in;
 }
