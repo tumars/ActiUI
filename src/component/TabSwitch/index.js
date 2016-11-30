@@ -1,7 +1,5 @@
 import React, { PropTypes, Component } from 'react';
 import style from './tabswitch.less';
-import store from '../../store'
-import co from '../../methed/Common'
 
 class TabSwitch extends Component {
     constructor(props) {
@@ -12,16 +10,12 @@ class TabSwitch extends Component {
     }
 
     handleClickLeft() {
-        const env = store.getState().UserInfo.env
-        env == 'ttjj' ? co.CNT('ttjjapp_act_201611tqkh_xyhyqy_01_01_01_0') : co.CNT('wx_act_201611tqkh_jgy_01_01_01_0')       
         this.setState({
             showTab1: true
         })
     }
 
     handleClickRight() {
-        const env = store.getState().UserInfo.env
-        env == 'ttjj' ? co.CNT('ttjjapp_act_201611tqkh_xyhyqy_02_01_01_0') : co.CNT('wx_act_201611tqkh_jgy_02_01_01_0')
         this.setState({
             showTab1: false
         })

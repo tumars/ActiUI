@@ -13,7 +13,7 @@ var nodeModulesPath = path.join(__dirname, '/node_modules/');
 module.exports = {
     devtool: false,
     entry: {
-        bundle: './src/app.js'
+        bundle: './src/main.js'
     },
     output: {
         path: path.join(__dirname, '/dist/'),

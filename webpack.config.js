@@ -9,7 +9,7 @@ module.exports = {
     entry: [
         'webpack-dev-server/client?http://localhost:3000',
         'webpack/hot/only-dev-server',
-        './src/app'
+        './src/main'
     ],
     output: {
         path: path.join(__dirname, '/dist/'),
@@ -26,9 +26,6 @@ module.exports = {
             {test: /\.js$/, loader: "eslint-loader", exclude: /node_modules/}
         ],
         loaders: [{
-            test: require.resolve('./src/methed/Common.js'), 
-            loader: "expose?co"
-        },{
             test: /\.js$/,
             loaders: ['react-hot', 'babel'],
             include: path.join(__dirname, 'src')

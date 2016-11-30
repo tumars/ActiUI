@@ -1,5 +1,5 @@
 .tabbox {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
 }
 .head {
@@ -11,18 +11,35 @@
         width: 48.5%;
         text-align: center;
         line-height: 2.2;
-        color: #FFE800;
+        color: #fff;
         font-size: 1.2em;
         font-weight: bold;
-        background: #272c63;
-        border: solid 2px #710600;
+        background: #898989;
+        border: 1px solid #d9d9d9;
         border-bottom: none;
         border-radius: .5em .5em 0 0;
     }
 }
 li.active {
+    position: relative;
     line-height: 2.5;
     font-size: 1.3em;
-    color: #710600;
-    background: #FFE800;
+    color: #898989;
+    background: #fff;
+
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 100%;
+        border-top: solid 2px #fff;
+        background: #fff;
+    }
+}
+
+.body {
+    padding: 50px 0;
+    border: 1px solid #d9d9d9;
+    text-align: center;
 }
