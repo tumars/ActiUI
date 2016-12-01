@@ -102,12 +102,12 @@ class Marquee extends Component {
         const { handleStart } = this.props
         const content = []
         for (var i = 0; i < 8; i++) {
-             content.push(<li key={i} className={this.state.index == i ? style.active : null}></li>)
+             content.push(<li key={i} className={this.state.index == i ? style.active : null}>{i}</li>)
         }
         return (
             <div className={style.content}>
                 <div className={style.box}>
-                    <div className={this.state.isScolling ? style.start_disable : style.start} onClick={(e) => this.state.isScolling ? false : handleStart(e)}></div>
+                    <div className={this.state.isScolling ? style.start_disable : style.start} onClick={(e) => this.state.isScolling ? false : handleStart(e)}>开始</div>
                     <ul>
                         {content}
                     </ul>

@@ -6,31 +6,27 @@ class TabSwitch extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            showTab: 1
+            showTab: this.props.showTab - 1
         }
     }
 
-    handleClickLeft() {
+    handleTabClick(i) {
         this.setState({
-            showTab1: true
-        })
-    }
-
-    handleClickRight() {
-        this.setState({
-            showTab1: false
+            showTab: i
         })
     }
 
     render() {
-        const { title1, title2, content1, content2 } = this.props
-        const box = this.state.showTab1 ? <div key={1} className={style.box}>{content1}</div> : <div key={2} className={style.box}>{content2}</div>
+        const { title, content } = this.props
+        // const box = this.state.showTab1 ? <div key={1} className={style.box}>{content1}</div> : <div key={2} className={style.box}>{content2}</div>
+        const box = <div key={this.state.showTab} className={style.box}>{content[this.state.showTab]}</div>
 
         return (
             <div className={style.content}>
                 <ul className={style.head}>
-                    <li className={ this.state.showTab1 ? style.active : null } onClick={()=>this.handleClickLeft()}>{title1}</li>
-                    <li className={ !this.state.showTab1 ? style.active : null } onClick={()=>this.handleClickRight()}>{title2}</li>
+                {title.map((val,i) => 
+                    <li key={i} className={ this.state.showTab == i ? style.active : null } onClick={()=>this.handleTabClick(i)}>{val}</li>
+                )}
                 </ul>
                 <div className={style.body}>
                     <ReactCSSTransitionGroup 
@@ -40,7 +36,7 @@ class TabSwitch extends Component {
                             enterActive: style.enterActive,
                             leave: style.leave,
                             leaveActive: style.leaveActive
-                          }} 
+                        }} 
                         transitionEnterTimeout={300} 
                         transitionLeaveTimeout={100}
                      >
@@ -53,17 +49,15 @@ class TabSwitch extends Component {
 }
 
 TabSwitch.propTypes = {
-    title1: PropTypes.string.isRequired,
-    title2: PropTypes.string.isRequired,
-    content1: PropTypes.node.isRequired,
-    content2: PropTypes.node.isRequired
+    showTab: PropTypes.number,
+    title: PropTypes.array,
+    content: PropTypes.array
 }
 
 TabSwitch.defaultProps = {
-    title1: 'tab1',
-    title2: 'tab2',
-    content1: 'empty1',
-    content2: 'empty2'
+    showTab: 1,
+    title: ['tab1','tab2'],
+    content: ['empty1','empty2']
 }
 
 export default TabSwitch

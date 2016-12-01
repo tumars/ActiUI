@@ -1,0 +1,47 @@
+import React from 'react'
+import Spin from '../Spin'
+
+const bg = (
+	<div className="bg">
+		<h3>我是要被虚化的标题</h3>
+		<p>我是要被虚化的内容，我是要被虚化的内容</p>
+	</div>
+)
+
+const UseSpin = () => (
+	<div>
+		<div className="content">
+			<Spin />
+			{bg}
+		</div>
+		<br/>
+		<div className="content">
+			<Spin blur={bg}/>
+		</div>
+	</div>
+	
+)
+
+export default UseSpin
+
+---------------------------------
+
+.content {
+	position: relative;
+	width: 260px;
+	box-sizing: border-box
+}
+.btn {
+	width: 150px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	color: #fff;
+	background: #108ee9;
+	border-radius: 4px
+}
+.bg {
+	box-sizing: border-box;
+	padding: 10px;
+	border: solid 1px #e9e9e9
+}

@@ -1,0 +1,37 @@
+import React, { Component }from 'react'
+import Dialog from '../Dialog'
+
+class UseDialog extends Component {
+	constructor(props) {
+		super(props)
+		this.state ={showdiaolg: false}
+		this.handleClose = this.handleClose.bind(this)
+		this.handleClick = this.handleClick.bind(this)
+	}
+	handleClose() {
+		this.setState({showdiaolg: false})
+	}
+	handleClick() {
+		this.setState({showdiaolg: true})
+	}
+	render() {
+		const state = this.state 
+		const pop = (
+			<Dialog 
+				onClose={this.handleClose}
+				visible={state.showdiaolg}
+			>
+				<h2>我是弹框</h2>
+				<p>我是弹框的内容</p>
+			</Dialog>
+		)
+		return (
+			<div>
+				<div onClick={this.handleClick}>点我出现弹框</div>
+				{pop}
+			</div>
+		)
+	}
+}
+
+export default UseDialog

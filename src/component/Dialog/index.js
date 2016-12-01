@@ -51,10 +51,28 @@ class Dialog extends Component {
         
         return (
             <div>
-                <ReactCSSTransitionGroup transitionName="fade" transitionEnterTimeout={300} transitionLeaveTimeout={300}>
+                <ReactCSSTransitionGroup 
+                    transitionName={{
+                        enter: style.fade_enter,
+                        enterActive: style.fade_enterActive,
+                        leave: style.fade_leave,
+                        leaveActive: style.fade_leaveActive
+                    }} 
+                    transitionEnterTimeout={200} 
+                    transitionLeaveTimeout={200}
+                >
                     {mask}
                 </ReactCSSTransitionGroup>
-                <ReactCSSTransitionGroup transitionName="slideTop" transitionEnterTimeout={300} transitionLeaveTimeout={300}>
+                <ReactCSSTransitionGroup 
+                    transitionName={{
+                        enter: style.slideTop_enter,
+                        enterActive: style.slideTop_enterActive,
+                        leave: style.slideTop_leave,
+                        leaveActive: style.slideTop_leaveActive
+                    }} 
+                    transitionEnterTimeout={200} 
+                    transitionLeaveTimeout={200}
+                >
                     {InnerContent}
                 </ReactCSSTransitionGroup>
             </div>
