@@ -167,8 +167,7 @@ const Hello = React.createClass({
 
 const Nav = () => (
 	<ul className={style.nav}>
-		<li onClick={()=> hashHistory.replace('Hello')}><span>简介</span></li>
-		<li onClick={()=> hashHistory.replace('Loading')}><span>{data.Loading.name}<small>{data.Loading.id}</small></span></li>
+		<li onClick={()=> hashHistory.replace('/')}><span>简介</span></li>
 		<li onClick={()=> hashHistory.replace('Loading')}><span>{data.Loading.name}<small>{data.Loading.id}</small></span></li>
 		<li onClick={()=> hashHistory.replace('TabSwitch')}><span>{data.TabSwitch.name}<small>{data.TabSwitch.id}</small></span></li>
 		<li onClick={()=> hashHistory.replace('RollNotice')}><span>{data.RollNotice.name}<small>{data.RollNotice.id}</small></span></li>
@@ -199,7 +198,7 @@ export default class App extends Component {
 					</div>
 					<div className={style.right_box}>
 						<Router history={ hashHistory} >
-							<Route path="/Hello">
+							<Route path="/">
 								<IndexRoute component={Hello} />
 								<Route path={'Loading'} component={Loading} />
 								<Route path={'TabSwitch'} component={TabSwitch} />
