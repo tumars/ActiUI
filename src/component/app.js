@@ -1,6 +1,7 @@
-import React, { Component, PropTypes } from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { arduinoLight } from 'react-syntax-highlighter/dist/styles';
+import React, { Component, PropTypes } from 'react'
+import { Router, Route, IndexRoute, hashHistory } from 'react-router'
+import SyntaxHighlighter from 'react-syntax-highlighter'
+import { arduinoLight } from 'react-syntax-highlighter/dist/styles'
 import ListErr from './ListErr'
 import useTabSwitch from './use/useTabSwitch.js'
 import useRollNotice from './use/useRollNotice.js'
@@ -11,16 +12,18 @@ import UseSpin from './use/UseSpin.js'
 import style from './app.less'
 
 
-const data = [
-	{
-		name: '带文本框样式的 Loading',
+const data = {
+	'Loading': {
+		id: 'Loading',
+		name: '带文本框样式的加载',
 		demo: <ListErr />,
 		instru: '适用于在卡片列表等元素加载完成前显示，表示列表正在加载中',
 		code: require("raw-loader!./use/listerr"),
 		api: null
 	},
-	{
-		name: '标签切换 TabSwitch',
+	'TabSwitch': {
+		id:'TabSwitch',
+		name: '标签切换',
 		demo: useTabSwitch(),
 		instru: '多标签页切换，可渲染两个及以上标签页，接收每个标签页的标题名与内容',
 		code: require("raw-loader!./use/useTabSwitch.de"),
@@ -30,8 +33,9 @@ const data = [
 			'content|标签页的内容|array，[ReactNode]|null'
 		]
 	},
-	{
-		name: '滚动公告 RollNotice',
+	'RollNotice': {
+		id: 'RollNotice',
+		name: '滚动公告',
 		demo: useRollNotice(),
 		instru: '滚动公告，常用于用户获奖公告',
 		code: require("raw-loader!./use/useRollNotice.de"),
@@ -40,8 +44,9 @@ const data = [
 			'color|喇叭与文字颜色|string|#000'
 		]
 	},
-	{
-		name: '跑马灯抽奖 Marquee',
+	'Marquee': {
+		id: 'Marquee',
+		name: '跑马灯抽奖',
 		demo: <UseMarquee />,
 		instru: '用于用户抽奖活动，点击开始执行开始事件，接口获取到奖励后跑马灯开始旋转，定位到奖励后执行结束事件',
 		code: require("raw-loader!./use/UseMarquee.de"),
@@ -52,8 +57,9 @@ const data = [
 			'handleResult|旋转结束执行的事件|function|()=>alert("网络异常！")'
 		]
 	},
-	{
-		name: '弹框 Dialog',
+	'Dialog': {
+		id: 'Dialog',
+		name: '弹框',
 		demo: <UseDialog />,
 		instru: '普通弹框，未设置过多功能，只有个关闭事件',
 		code: require("raw-loader!./use/UseDialog.de"),
@@ -62,8 +68,9 @@ const data = [
 			'visible|弹框是否可见|bool|fasle'
 		]
 	},
-	{
-		name: '菊花图 Spin',
+	'Spin': {
+		id: 'Spin',
+		name: '菊花图',
 		demo: <UseSpin />,
 		instru: '用于表示加载中，可以覆盖组件或整个屏幕，可将需要虚化的内容当做参数传入进行虚化',
 		code: require("raw-loader!./use/UseSpin.de"),
@@ -72,7 +79,7 @@ const data = [
 			'blur|传入要虚化的内容|ReactNode|null'
 		]
 	}
-]
+}
 
 class Card extends Component {
 	constructor(props) {
@@ -80,7 +87,7 @@ class Card extends Component {
 	}
 
 	render() {
-		const { value, index } = this.props
+		const { value } = this.props
 		const apilist = value.api == null ? <p>没有接口，直接使用</p> : (
 			<div className={style.apilist}>
 				<ul>
@@ -103,7 +110,7 @@ class Card extends Component {
 		return (
 			<div className={style.card}>
 			<section>
-				<h2 className={style.h2}>{ index+1 }.{ value.name }</h2>
+				<h2 className={style.h2}>{ value.name + ' ' + value.id }</h2>
 				<div className={style.box}>
 					<div className={style.demo}>
 						{ value.demo }
@@ -127,14 +134,11 @@ class Card extends Component {
 	}
 }
 
-
 Card.propTypes = {
-	index: PropTypes.number,
 	value:  PropTypes.object
 }
 
 Card.defaultProps = {
-	index: -1,
     value: {
 		name: null,
 		demo: null,
@@ -144,10 +148,41 @@ Card.defaultProps = {
     }
 }
 
+const Loading = () => (<Card value={data.Loading} />)
+const TabSwitch = () => (<Card value={data.TabSwitch} />)
+const RollNotice = () => (<Card value={data.RollNotice} />)
+const Marquee = () => (<Card value={data.Marquee} />)
+const Dialog = () => (<Card value={data.Dialog} />)
+const Spin = () => (<Card value={data.Spin} />)
+
+const Hello = React.createClass({
+  render() {
+    return (
+		<div className={style.hello}>
+			<h2>Welcome to the app!</h2>
+		</div>
+    )
+  }
+})
+
+const Nav = () => (
+	<ul className={style.nav}>
+		<li onClick={()=> hashHistory.replace('Hello')}><span>简介</span></li>
+		<li onClick={()=> hashHistory.replace('Loading')}><span>{data.Loading.name}<small>{data.Loading.id}</small></span></li>
+		<li onClick={()=> hashHistory.replace('Loading')}><span>{data.Loading.name}<small>{data.Loading.id}</small></span></li>
+		<li onClick={()=> hashHistory.replace('TabSwitch')}><span>{data.TabSwitch.name}<small>{data.TabSwitch.id}</small></span></li>
+		<li onClick={()=> hashHistory.replace('RollNotice')}><span>{data.RollNotice.name}<small>{data.RollNotice.id}</small></span></li>
+		<li onClick={()=> hashHistory.replace('Marquee')}><span>{data.Marquee.name}<small>{data.Marquee.id}</small></span></li>
+		<li onClick={()=> hashHistory.replace('Dialog')}><span>{data.Dialog.name}<small>{data.Dialog.id}</small></span></li>
+		<li onClick={()=> hashHistory.replace('Spin')}><span>{data.Spin.name}<small>{data.Spin.id}</small></span></li>
+	</ul>
+)
+
+
+
 
 
 export default class App extends Component {
-
 	constructor(props) {
 		super(props);
 	}
@@ -155,16 +190,43 @@ export default class App extends Component {
 	render() {
 		return (
 			<div className={style.content}>
-				{data.map((value, index) =>
-					<Card
-						key={index}
-						index={index}
-						value={value}
-					/>
-				)}
+				<div className={style.head}>
+					<h1>Acti UI</h1>
+				</div>
+				<div className={style.main}>
+					<div className={style.left_box}>
+						<Nav/>
+					</div>
+					<div className={style.right_box}>
+						<Router history={ hashHistory} >
+							<Route path="/Hello">
+								<IndexRoute component={Hello} />
+								<Route path={'Loading'} component={Loading} />
+								<Route path={'TabSwitch'} component={TabSwitch} />
+								<Route path={'RollNotice'} component={RollNotice} />
+								<Route path={'Marquee'} component={Marquee} />
+								<Route path={'Dialog'} component={Dialog} />
+								<Route path={'Spin'} component={Spin} />
+							</Route>
+						</Router>
+					</div>
+				</div>
 			</div>
 		);
 	}
 }
+
+
+// const App = (
+// 	<Router history={ hashHistory} >
+// 		{data.map((value, index) =>
+// 			<Route path={value.id} component={<Card
+// 				key={index}
+// 				index={index}
+// 				value={value}
+// 			/>} />
+// 		)}
+// 	</Router>
+// ）
 
 
