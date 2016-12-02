@@ -9,7 +9,7 @@ class Nav extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			i: 0
+			i: -1
 		}
 	}
 	handleClick(i, id) {

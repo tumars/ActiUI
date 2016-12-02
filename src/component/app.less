@@ -14,6 +14,7 @@
         font-weight: 500;
     }
 }
+body::-webkit-scrollbar {display:none}
 pre, code {
 	font-family: Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif; 
 }
@@ -101,6 +102,21 @@ pre, code {
 			&:focus {color: #095f8a;}
 		}
 	}
+	.contact {
+		margin-top: 200px;
+		h4 {line-height: 2.5;}
+		li {
+			margin: 10px 0;
+			overflow: hidden;
+			text-align: left;
+			div {
+				display: inline-block;
+				&:first-child {
+					margin-right: 5px;
+				}
+			}
+		}
+}
 }
 
 .main{
@@ -224,6 +240,30 @@ pre, code {
 		font-size: 14px;
 		text-align: center;
 		background: #fff;
+	}
+	.arrow {
+		position: absolute;
+		top: -10px;
+		right: 10px;
+		padding: 0 5px;
+		background: #fff;
+		svg {
+			width: 22px;
+			height: 22px;
+			cursor: pointer;
+			transform: rotate(0deg);
+			transition: all 500ms ease;
+			&:hover {
+				fill: #666
+			} 
+		}
+	}
+	.arrow_up {
+		.arrow;
+		svg {
+			transform: rotate(180deg);
+			// transition: all 500ms ease;
+		}
 	}
 }
 .demo {
