@@ -58,10 +58,6 @@ module.exports = {
             filename: 'index.html'
         }),
         new ExtractTextPlugin('[name]-[hash:5].min.css'),
-        
-        // new webpack.DefinePlugin({
-        //     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-        // })
     ],
     module: {
         loaders: [{
@@ -83,13 +79,7 @@ module.exports = {
         }]
     },
     resolve: {
-        extensions: ['', '.js', '.jsx', '.json'],
-        alias: {
-            // 'react': path.join(nodeModulesPath,'react/docs/react.min'),
-            // 'react-dom': path.join(nodeModulesPath,'react-dom/docs/react-dom.min'),
-            // 'redux': path.join(nodeModulesPath,'redux/docs/redux.min'),
-            // 'react-redux': path.join(nodeModulesPath,'react-redux/docs/react-redux.min')
-        }
+        extensions: ['', '.js', '.jsx', '.json']
     },
     postcss: [
         require('autoprefixer')
