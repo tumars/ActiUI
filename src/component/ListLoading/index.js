@@ -1,7 +1,7 @@
 import React from 'react';
-import style from './listerr.less';
+import style from './listloading.less';
 
-const ListErr = () => (
+const ListLoading = () => (
 	<div className={style.content}>
 		<div className={style.word}>加载中...</div>
 		<div className={style.errtip}>
@@ -14,6 +14,6 @@ const ListErr = () => (
     </div>
 )
 
-export default ListErr
+export default ListLoading
 
 

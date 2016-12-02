@@ -19,6 +19,9 @@ class RollNotice extends Component {
     }
     start() {
         const _that = this
+        _that.setState({
+            word:  _that.props.data[0]
+        })
         let i = 0
         _that.timer = setInterval(function() {
             i == _that.props.data.length-1 ? i = 0 : i++ 

@@ -2,84 +2,11 @@ import React, { Component, PropTypes } from 'react'
 import { Router, Route, IndexRoute, hashHistory } from 'react-router'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { arduinoLight } from 'react-syntax-highlighter/dist/styles'
-import ListErr from './ListErr'
-import useTabSwitch from './use/useTabSwitch.js'
-import useRollNotice from './use/useRollNotice.js'
-import UseMarquee from './use/useMarquee.js'
-import UseDialog from './use/UseDialog.js'
-import UseSpin from './use/UseSpin.js'
+import data from './data.js'
+import Nav from './nav.js'
+import Hello from './Hello.js'
 
 import style from './app.less'
-
-
-const data = {
-	'Loading': {
-		id: 'Loading',
-		name: '带文本框样式的加载',
-		demo: <ListErr />,
-		instru: '适用于在卡片列表等元素加载完成前显示，表示列表正在加载中',
-		code: require("raw-loader!./use/listerr"),
-		api: null
-	},
-	'TabSwitch': {
-		id:'TabSwitch',
-		name: '标签切换',
-		demo: useTabSwitch(),
-		instru: '多标签页切换，可渲染两个及以上标签页，接收每个标签页的标题名与内容',
-		code: require("raw-loader!./use/useTabSwitch.de"),
-		api: [
-			'showTab|默认显示的标签|number|1',
-			'title|标签页的名字|array，[ReactNode]|["标签一","标签二"]',
-			'content|标签页的内容|array，[ReactNode]|null'
-		]
-	},
-	'RollNotice': {
-		id: 'RollNotice',
-		name: '滚动公告',
-		demo: useRollNotice(),
-		instru: '滚动公告，常用于用户获奖公告',
-		code: require("raw-loader!./use/useRollNotice.de"),
-		api: [
-			'data|要滚动显示的数据组|array|null',
-			'color|喇叭与文字颜色|string|#000'
-		]
-	},
-	'Marquee': {
-		id: 'Marquee',
-		name: '跑马灯抽奖',
-		demo: <UseMarquee />,
-		instru: '用于用户抽奖活动，点击开始执行开始事件，接口获取到奖励后跑马灯开始旋转，定位到奖励后执行结束事件',
-		code: require("raw-loader!./use/UseMarquee.de"),
-		api: [
-			'isStart|是否开始游戏|bool|false',
-			'prize|获得的奖励位置|number|-1',
-			'handleStart|点击开始执行的事件|function|()=>alert("网络异常！")',
-			'handleResult|旋转结束执行的事件|function|()=>alert("网络异常！")'
-		]
-	},
-	'Dialog': {
-		id: 'Dialog',
-		name: '弹框',
-		demo: <UseDialog />,
-		instru: '普通弹框，未设置过多功能，只有个关闭事件',
-		code: require("raw-loader!./use/UseDialog.de"),
-		api: [
-			'onClose|关闭弹窗时执行的事件|function|null',
-			'visible|弹框是否可见|bool|fasle'
-		]
-	},
-	'Spin': {
-		id: 'Spin',
-		name: '菊花图',
-		demo: <UseSpin />,
-		instru: '用于表示加载中，可以覆盖组件或整个屏幕，可将需要虚化的内容当做参数传入进行虚化',
-		code: require("raw-loader!./use/UseSpin.de"),
-		api: [
-			'isFixed|是否覆盖全屏|bool|false',
-			'blur|传入要虚化的内容|ReactNode|null'
-		]
-	}
-}
 
 class Card extends Component {
 	constructor(props) {
@@ -127,7 +54,12 @@ class Card extends Component {
 						<h3>接口参数</h3>
 						{ apilist }
 					</div>
+					<a className={style.git} href="https://github.com/tumars/ActiUI">
+						<svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs><style type="text/css"></style></defs><path d="M1.3 525.3c0 223 142.9 412.6 342.1 482.2 26.8 6.8 22.7-12.4 22.7-25.4l0-88.5C211.2 911.8 205 809.2 194.5 792.1c-21.1-35.9-70.7-45-55.9-62.1 35.3-18.2 71.2 4.6 112.9 66.1 30.2 44.6 88.8 37.1 118.7 29.6 6.5-26.8 20.5-50.7 39.6-69.4-160.3-28.5-227.3-126.5-227.3-243 0-56.4 18.6-108.4 55.2-150.3-23.2-69.2 2.2-128.2 5.6-137 66.3-6 135.1 47.4 140.5 51.6 37.7-10.1 80.7-15.6 128.8-15.6 48.4 0 91.6 5.6 129.5 15.8 12.9-9.8 76.8-55.6 138.4-50 3.3 8.8 28.1 66.5 6.3 134.7 37 42 55.8 94.3 55.8 151 0 116.7-67.3 214.8-228.2 243.1 26.9 26.5 43.5 63.3 43.5 104l0 128.4c0.9 10.2 0 20.5 17.2 20.5 202.1-68.1 347.6-259.1 347.6-484.1 0-282.1-228.7-510.7-510.7-510.7C229.9 14.6 1.3 243.2 1.3 525.3z"></path></svg>
+						查看该组件源码
+					</a>
 				</div>
+				
 			</section>
 		</div>
 		)
@@ -148,39 +80,8 @@ Card.defaultProps = {
     }
 }
 
-const Loading = () => (<Card value={data.Loading} />)
-const TabSwitch = () => (<Card value={data.TabSwitch} />)
-const RollNotice = () => (<Card value={data.RollNotice} />)
-const Marquee = () => (<Card value={data.Marquee} />)
-const Dialog = () => (<Card value={data.Dialog} />)
-const Spin = () => (<Card value={data.Spin} />)
-
-const Hello = React.createClass({
-  render() {
-    return (
-		<div className={style.hello}>
-			<h2>Welcome to the app!</h2>
-		</div>
-    )
-  }
-})
-
-const Nav = () => (
-	<ul className={style.nav}>
-		<li onClick={()=> hashHistory.replace('/')}><span>简介</span></li>
-		<li onClick={()=> hashHistory.replace('Loading')}><span>{data.Loading.name}<small>{data.Loading.id}</small></span></li>
-		<li onClick={()=> hashHistory.replace('TabSwitch')}><span>{data.TabSwitch.name}<small>{data.TabSwitch.id}</small></span></li>
-		<li onClick={()=> hashHistory.replace('RollNotice')}><span>{data.RollNotice.name}<small>{data.RollNotice.id}</small></span></li>
-		<li onClick={()=> hashHistory.replace('Marquee')}><span>{data.Marquee.name}<small>{data.Marquee.id}</small></span></li>
-		<li onClick={()=> hashHistory.replace('Dialog')}><span>{data.Dialog.name}<small>{data.Dialog.id}</small></span></li>
-		<li onClick={()=> hashHistory.replace('Spin')}><span>{data.Spin.name}<small>{data.Spin.id}</small></span></li>
-	</ul>
-)
-
-
-
-
-
+// const wid = document.body.clientWidth
+const arr = Object.keys(data)
 export default class App extends Component {
 	constructor(props) {
 		super(props);
@@ -200,12 +101,11 @@ export default class App extends Component {
 						<Router history={ hashHistory} >
 							<Route path="/">
 								<IndexRoute component={Hello} />
-								<Route path={'Loading'} component={Loading} />
-								<Route path={'TabSwitch'} component={TabSwitch} />
-								<Route path={'RollNotice'} component={RollNotice} />
-								<Route path={'Marquee'} component={Marquee} />
-								<Route path={'Dialog'} component={Dialog} />
-								<Route path={'Spin'} component={Spin} />
+								{
+									arr.map((val, index)=>
+										<Route key={index} path={val} component={() => (<Card value={data[val]} />)} />
+									)
+								}
 							</Route>
 						</Router>
 					</div>
@@ -214,18 +114,3 @@ export default class App extends Component {
 		);
 	}
 }
-
-
-// const App = (
-// 	<Router history={ hashHistory} >
-// 		{data.map((value, index) =>
-// 			<Route path={value.id} component={<Card
-// 				key={index}
-// 				index={index}
-// 				value={value}
-// 			/>} />
-// 		)}
-// 	</Router>
-// ）
-
-
