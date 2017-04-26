@@ -15,7 +15,7 @@
     "strict": [2, "never"],
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
-    "no-console": ["error", { allow: ["warn", "error", "log"] }]
+    "no-console": ["error", { allow: ["warn", "error", "log", "info"] }]
   },
   "Options": "except-parens",
   "plugins": [

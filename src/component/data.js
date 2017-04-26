@@ -5,6 +5,7 @@ import useRollNotice from './RollNotice/demo.js'
 import UseMarquee from './Marquee/demo.js'
 import UseDialog from './Dialog/demo.js'
 import UseSpin from './Spin/demo.js'
+import UseVerify from './Verify/demo.js'
 
 
 const data = {
@@ -23,9 +24,9 @@ const data = {
 		instru: '多标签页切换，可渲染两个及以上标签页，接收每个标签页的标题名与内容',
 		code: require("raw-loader!./use/useTabSwitch.de"),
 		api: [
-			'showTab|默认显示的标签|number|1',
-			'title|标签页的名字|array，[ReactNode]|["标签一","标签二"]',
-			'content|标签页的内容|array，[ReactNode]|null'
+			'activeIndex|默认显示的标签|number|1',
+			'panels|标签页的名字及内容|array，[ReactNode]|[{title: "tab1",content: "empty1"}]',
+			'onTabChange|标签切换时的事件|function|null'
 		]
 	},
 	'RollNotice': {
@@ -48,15 +49,15 @@ const data = {
 		api: [
 			'isStart|是否开始游戏|bool|false',
 			'prize|获得的奖励位置|number|-1',
-			'handleStart|点击开始执行的事件|function|()=>alert("网络异常！")',
-			'handleResult|旋转结束执行的事件|function|()=>alert("网络异常！")'
+			'onStart|点击开始执行的事件|function|()=>alert("网络异常！")',
+			'onResult|旋转结束执行的事件|function|()=>alert("网络异常！")'
 		]
 	},
 	'Dialog': {
 		id: 'Dialog',
 		name: '弹框',
 		demo: <UseDialog />,
-		instru: '普通弹框，未设置过多功能，只有个关闭事件',
+		instru: '普通弹框，未设置过多功能，只有个关闭事件。支持使用 Dialog.showMsg(content) 的方式直接调用弹框，content 参数为 string 或 react node。',
 		code: require("raw-loader!./use/UseDialog.de"),
 		api: [
 			'onClose|关闭弹窗时执行的事件|function|null',
@@ -72,6 +73,18 @@ const data = {
 		api: [
 			'isFixed|是否覆盖全屏|bool|false',
 			'blur|传入要虚化的内容|ReactNode|null'
+		]
+	},
+	'Verify': {
+		id: 'Verify',
+		name: '手机验证',
+		demo: <UseVerify />,
+		instru: '完整的手机号码验证组件，常配合 Dialog 弹框一块使用',
+		code: require("raw-loader!./use/UseVerify.de"),
+		api: [
+			'verifyTip|外部控制的提示|string|null',
+			'onSendSms|申请验证码回调事件|function|null',
+			'onConfirm|确认回调事件|function|null'
 		]
 	}
 }

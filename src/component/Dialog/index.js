@@ -1,82 +1,39 @@
-import React, { PropTypes,Component } from 'react';
-import ReactCSSTransitionGroup  from 'react-addons-css-transition-group'
-import style from './dialog.less';
-
+import React, { PropTypes,Component } from 'react'
+import ReactDOM from 'react-dom'
+import Modal from './modal'
+import showMsg from "./showMsg";
 
 class Dialog extends Component {
     constructor(props) {
         super(props);
+    }
 
-        this.state = {
-            isShow: false
-        };
+    renderPoral() {
+        ReactDOM.unstable_renderSubtreeIntoContainer(
+            this,
+            <Modal {...this.props}>
+                {this.props.children}
+            </Modal>,
+            this.node
+        )
     }
 
     componentDidMount() {
-        if (this.props.visible) {
-            this.enter();
-        }
+        this.node = document.createElement('div')
+        document.body.appendChild(this.node)
+        this.renderPoral()
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (!this.state.visible && nextProps.visible) {
-            this.enter();
-        } else if (this.state.visible && !nextProps.visible) {
-            this.leave();
-        }
+    componentDidUpdate() {
+        this.renderPoral()
     }
 
-    enter() {
-        this.setState({
-            isShow: true
-        })
+    componentWillUnmount() {
+        document.body.removeChild(this.node)
     }
 
-    leave() {
-        this.setState({
-            isShow: false
-        });
-        this.props.onClose()
-    }
-
-    render() {
-        const mask = this.state.isShow ? <div className={style.dyy} onClick={()=>this.leave()}> </div> : null
-        const InnerContent = this.state.isShow ? (
-                <div className={style.default}>
-                    <div className={style.close} onClick={()=>this.leave()}></div>
-                    <div className={style.inner}>{this.props.children}</div>
-                </div>
-            ) : 
-            null
-        
-        return (
-            <div>
-                <ReactCSSTransitionGroup 
-                    transitionName={{
-                        enter: style.fade_enter,
-                        enterActive: style.fade_enterActive,
-                        leave: style.fade_leave,
-                        leaveActive: style.fade_leaveActive
-                    }} 
-                    transitionEnterTimeout={200} 
-                    transitionLeaveTimeout={200}
-                >
-                    {mask}
-                </ReactCSSTransitionGroup>
-                <ReactCSSTransitionGroup 
-                    transitionName={{
-                        enter: style.slideTop_enter,
-                        enterActive: style.slideTop_enterActive,
-                        leave: style.slideTop_leave,
-                        leaveActive: style.slideTop_leaveActive
-                    }} 
-                    transitionEnterTimeout={200} 
-                    transitionLeaveTimeout={200}
-                >
-                    {InnerContent}
-                </ReactCSSTransitionGroup>
-            </div>
-        );
+    render() {        
+        return null
     }
 }
 
@@ -87,8 +44,9 @@ Dialog.propTypes = {
 };
 
 Dialog.defaultProps = {
-    onClose: ()=>null,
     visible: false
 };
 
-export default Dialog;
+
+Dialog.showMsg = showMsg
+export default Dialog

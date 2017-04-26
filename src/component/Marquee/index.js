@@ -51,7 +51,7 @@ class Marquee extends Component {
                 speed: 240
             })
             setTimeout(function () {
-                _that.props.handleResult()
+                _that.props.onResult()
             },100);
         } else {
             _that.setState({
@@ -99,7 +99,7 @@ class Marquee extends Component {
 
 
     render() {
-        const { handleStart } = this.props
+        const { onStart } = this.props
         const content = []
         for (var i = 0; i < 8; i++) {
              content.push(<li key={i} className={this.state.index == i ? style.active : null}>{i}</li>)
@@ -107,7 +107,7 @@ class Marquee extends Component {
         return (
             <div className={style.content}>
                 <div className={style.box}>
-                    <div className={this.state.isScolling ? style.start_disable : style.start} onClick={(e) => this.state.isScolling ? false : handleStart(e)}>开始</div>
+                    <div className={this.state.isScolling ? style.start_disable : style.start} onClick={(e) => this.state.isScolling ? false : onStart(e)}>开始</div>
                     <ul>
                         {content}
                     </ul>
@@ -120,17 +120,17 @@ class Marquee extends Component {
 Marquee.propTypes = {
     isStart: PropTypes.bool,
     prize: PropTypes.number,
-    handleStart: PropTypes.func,
-    handleResult: PropTypes.func
+    onStart: PropTypes.func,
+    onResult: PropTypes.func
 }
 
 Marquee.defaultProps = {
     isStart: false,
     prize: -1,
-    handleStart: () => {
+    onStart: () => {
         alert('网络异常！')
     },
-    handleResult: () => {
+    onResult: () => {
         alert('网络异常！')
     }
 }

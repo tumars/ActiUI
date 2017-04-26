@@ -1,5 +1,5 @@
-import ListErr from ListErr
+import ListLoading from ListLoading
 
 ...
-<ListErr /> //无参数，直接调用即可
+<ListLoading /> //无参数，直接调用即可
 ...

@@ -27,8 +27,8 @@ class UseMarquee extends Component {
 			<Marquee 
 				isStart={this.state.startGame}
 				prize={this.state.prize}
-				handleStart={() => this.handleMarqueeStart()}
-				handleResult={() => this.handleMarqueeResult()}
+				onStart={() => this.handleMarqueeStart()}
+				onResult={() => this.handleMarqueeResult()}
 			/>
 		)
 	}

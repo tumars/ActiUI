@@ -1,6 +1,7 @@
 .content {
     width: 100%;
     margin: 0 auto;
+    font-size: 14px;
 }
 .head {
     width: 100%;
@@ -47,34 +48,26 @@ li.active {
     min-height: 150px;
     border: 1px solid #d9d9d9;
     text-align: center;
-    overflow-x: hidden;
 }
 .box{
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
-    padding: 20px 0;
 }
 
 
 .enter {
-    transform: translate(-100%, 0);
-    opacity: 0.01;
+    opacity: 0.5;
 }
 .enterActive {
-    transform: translate(0, 0);
     opacity: 1;
-    transition: all 300ms ease-in;
+    transition: all 150ms ease-in;
 }
 
 .leave {
-    transform: translate(0, 0);
-    opacity: 1;
+    opacity: .5;
 }
 
 .leaveActive {
-    transform: translate(100%, 0);
     opacity: 0.01;
-    transition: all 100ms ease-in;
+    transition: all 150ms ease-in;
 }

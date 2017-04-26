@@ -3,12 +3,15 @@ import Dialog from '../Dialog'
 
 const style = {
 	box: {
-		padding: '0 20px 20px'
+		boxSizing: 'border-box',
+		padding: '20px',
+		color: 'rgb(16, 142, 233)'
 	},
 	btn: {
 		width: '150px',
 		height: '30px',
 		lineHeight: '30px',
+		margin: '20px 0',
 		textAlign: 'center',
 		color: '#fff',
 		background: '#108ee9',
@@ -26,16 +29,22 @@ class UseDialog extends Component {
         }
         this.handleClose = this.handleClose.bind(this)
         this.handleClick = this.handleClick.bind(this)
+        this.handleClickS = this.handleClickS.bind(this)
 	}
 	handleClose() {
 		this.setState({
 			showdiaolg: false
 		})
+
+		console.log('弹框关闭')
 	}
 	handleClick() {
 		this.setState({
 			showdiaolg: true
 		})
+	}
+	handleClickS() {
+		Dialog.showMsg('HEY, 我是弹框的内容')
 	}
 	render() {
 		const state = this.state 
@@ -53,7 +62,8 @@ class UseDialog extends Component {
 		return (
 			<div>
 				{pop}
-				<div style={style.btn} onClick={this.handleClick}>点我出现弹框</div>
+				<div style={style.btn} onClick={this.handleClick}>第一种调用方式</div>
+				<div style={style.btn} onClick={this.handleClickS}>第二种调用方式</div>
 			</div>
 			
 		)

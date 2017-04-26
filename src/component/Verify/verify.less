@@ -1,0 +1,128 @@
+.content {
+    width: 220px;
+    margin: 0 auto;
+    padding: 20px 0;
+
+    input {
+        width: 100%;
+        height: 44px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        background-color: #eeeeee;
+        box-shadow: 2px 2px 0 0 #e5e5e5 inset;
+        border-radius: 8px;
+        outline:none
+    }
+}
+.validbox {
+    display: table;
+    width: 100%;
+    margin: 10px auto 10px;
+}
+
+
+.section:first-child {
+    display: table-cell;
+    width: 70%;
+    overflow: hidden;
+
+    input {
+        font-size: 16px;
+        border-radius: 8px 0 0 8px;
+    }
+}
+.section:nth-child(2) {
+    display: table-cell;
+    width: 30%;
+    overflow: hidden;
+    vertical-align: top;
+
+    span {
+        display: block;
+        width: 100%;
+        height: 44px;
+        line-height: 44px;
+        font-size: 14px;
+        color: #fff;
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 0 .4em .4em 0;
+        background-color: rgb(16, 142, 233);
+    }
+
+    .time {
+        color:#fff;
+        font-size:14px;
+        background: #ccc;
+        cursor: not-allowed
+    }
+}
+
+.btn {
+    display: block;
+    margin: 20px auto 0;
+    line-height: 2;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    background: rgb(16, 142, 233);
+    border-radius: 8px;
+}
+
+.tip_show {
+    display: block;
+    height:  18px;
+    color: #710600;
+    font-size: 12px;
+    text-align: center;
+    overflow: hidden;
+}
+.tip_hide {
+    .tip_show;
+    height: 0;
+}
+
+.dotting {
+    display: inline-block; min-width: 2px; min-height: 2px;
+    box-shadow: 2px 0 currentColor, 6px 0 currentColor, 10px 0 currentColor; /* for IE9+, ..., 3个点 */
+    animation: dot 1.5s infinite step-start both; /* for IE10+, ... */
+}
+
+.dotting:before { content: '...'; } /* for IE8. 若无需兼容IE8, 此行以及下一行删除*/
+.dotting::before { content: ''; } /* for IE9+ 覆盖 IE8 */
+:root .dotting { margin-right: 8px; } /* for IE9+,FF,CH,OP,SF 占据空间*/
+
+@keyframes dot {
+    25% { box-shadow: none; }                                  /* 0个点 */
+    50% { box-shadow: 2px 0 currentColor; }                    /* 1个点 */
+    75% { box-shadow: 2px 0 currentColor, 6px 0 currentColor;  /* 2个点 */ }
+}
+
+
+.enter {
+    display: block;
+    transform: translateY(18px);
+    opacity: 0.01;
+}
+.enterActive {
+    display: block;
+    transform: translateY(-0);
+    opacity: 1;
+    transition: all 150ms ease-in;
+}
+
+.leave {
+    display: block;
+    transform: translateY(-0);
+    opacity: 1;
+}
+
+.leaveActive {
+    display: block;
+    transform: translateY(-18px);
+    opacity: 0.01;
+    transition: all 150ms ease-in;
+}
+
