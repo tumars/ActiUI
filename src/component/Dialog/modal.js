@@ -18,7 +18,15 @@ class Modal extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        nextProps.visible && this.enter()
+        if (nextProps.visible && !this.state.isShow) {
+            this.enter()
+        } else if(!nextProps.visible && this.state.isShow) {
+            this.leave()
+        }
+    }
+
+    componentWillUnmount() {
+        this.leave();
     }
 
     changeBgs = {
@@ -26,40 +34,30 @@ class Modal extends Component {
         change() {
             const root = this.root
             if (root) {
-                root.style.filter = 'blur(8px)'
-                root.style.transform = 'scale(.98)'
-                root.style.transition = 'all 150ms ease-in'
-            } else {
-                console.info('can not fund element {#root} in html, change root element id or change Dialog->modal->changeBgs.root, for blur background');
-            }
+                root.classList.add('blur-set')
+            } 
         },
         fix() {
             const root = this.root
             if (root) {
-                root.style.filter = 'none'
-                root.style.transform = 'scale(1)'
-                root.style.transition = 'all 220ms ease-in'
+                root.classList.remove('blur-set')
             }
         }   
     }
 
     enter() {
-        this.changeBgs.change()   
-        setTimeout(()=>{
-            this.setState({
-                isShow: true
-            }) 
-        },100)
+        this.setState({
+            isShow: true
+        }) 
+        this.changeBgs.change()
     }
 
     leave() {
         this.setState({
             isShow: false
         });
-        setTimeout(()=>{
-            this.changeBgs.fix()
-            this.props.onClose && this.props.onClose()
-        },150)
+        this.changeBgs.fix()
+        this.props.onClose && this.props.onClose()
     }
 
     render() {
