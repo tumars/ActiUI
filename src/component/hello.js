@@ -3,6 +3,12 @@ import style from './app.less'
 
 const Hello = () => (
 	<div className={style.hello}>
+		<section style={{fontWeight: 'bold', border:'solid 1px #898989', padding: '20px'}}>
+			<h2>通知说明： </h2>
+			<p>这份组件库是刚学习 react 时写的，代码质量稀烂。。。。</p>
+			<p>由于 up 主业务缠身，太忙（懒），这份代码已经一年多未更新，年久失修，文件结构、代码规范、实现方式、语法逻辑等等都已比较落后。各位看看理念就好。up 主日后会抽时从新整理更新。</p>
+			<p>这份 <a  href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule "> https://github.com/tumars/boilerplate-webpack-react-es6-cssModule</a>使用了类似的理念与框架，代码相对较新。各位看官请参考这份。</p>
+		</section>
 		<section>
 			<h2>什么是 ActiUI？ </h2>
 			<p>ActiUI 是基于 React 的 web conponent 组件库，包含多个独立的功能性组件，以便前端工程师开发时调取使用。</p>

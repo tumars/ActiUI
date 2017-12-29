@@ -8,8 +8,7 @@ class Verify extends Component {
         this.state = {
             isTiming: false,
             time: 60,
-            tip: null,
-            isActiveBtn: false
+            tip: null
         }
     }
 
