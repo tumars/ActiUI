@@ -1,5 +1,5 @@
 # ActiUI
-<del>基于 React 的前端组件库，提供一些常用组件库里不常见的组件与功能，具体使用详情请查看 [https://tumars.github.io/ActiUI/](https://tumars.github.io/ActiUI/)</del>
+基于 React 的前端组件库，提供一些常用组件库里不常见的组件与功能，具体使用详情请查看 [https://tumars.github.io/ActiUI/](https://tumars.github.io/ActiUI/)
 
 ## 说明
 这份组件库是刚学习 react 时写的，代码质量稀烂。。。。
